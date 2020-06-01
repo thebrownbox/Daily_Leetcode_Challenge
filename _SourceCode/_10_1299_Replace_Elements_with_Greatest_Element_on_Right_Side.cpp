@@ -1,6 +1,6 @@
 /*
 The Brown Box / hoangvancong.com
-Id: 941
+Id: 1299
 Name: Replace Elements with Greatest Element on Right Side
 Url: https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
 */
