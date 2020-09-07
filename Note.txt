@@ -1,0 +1,29 @@
+Note: https://www.hackerrank.com/domains/algorithms/graph-theory/difficulty:medium/page:1
+
+
+
+=== Đệ qyy ====
+OK | 34. Reverse string
+OK | 35. Fibonaci
+OK | 36. Pow (đệ quy)
+
+: ứng dụng giải về linked list
+_V37_ | 206. Reverse Linked List
+
+24. Swap Nodes in Pairs
+21. Merge Two Sorted Lists
+
+: Ứng dụng sắp xếp
+912. Sort an Array (Quick Sort)
+912. Sort an Array (Merge Sort)
+
+: ứng dụng trong tìm kiếm
+Binary search (https://leetcode.com/explore/learn/card/binary-search/138/background/1038/)
+
+===================== 
+Chuyển sang Binary Tree (Chỉ nên cover các bài cơ bản nhất, các bài khó để làm sau)
+
+
+=====================
+
+: Ứng dụng trong Binary Tree (Sau)
