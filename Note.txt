@@ -9,13 +9,15 @@ OK | 36. Pow (đệ quy)
 
 : ứng dụng giải về linked list
 _V37_ | 206. Reverse Linked List
+_V38_ | 21. Merge Two Sorted Lists
+_V39_ | 24. Swap Nodes in Pairs
 
-24. Swap Nodes in Pairs
-21. Merge Two Sorted Lists
 
 : Ứng dụng sắp xếp
 912. Sort an Array (Quick Sort)
 912. Sort an Array (Merge Sort)
+
+== Độ phức tạp thuật toán ==
 
 : ứng dụng trong tìm kiếm
 Binary search (https://leetcode.com/explore/learn/card/binary-search/138/background/1038/)
