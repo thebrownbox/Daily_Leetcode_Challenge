@@ -4,7 +4,14 @@ The problem will follow as "Learn" module in LeetCode.
 
 Youtube Videos: https://www.youtube.com/playlist?list=PLqLksqdSk4b37pGIyfy_266wP0-S68HDh
 
+Theory: Data Structure and Algorithm
+| No. | Title | Youtube |
+|-----|----|---------|
+| 1   |    |         |
+| 2   |    |         |
+| 3   |    |         |
 
+Videos:
 | Day | ID | Name | Tags | Youtube |
 |-----|----|------|------|---------|
 | 1   |    |      |      |         |
