@@ -25,7 +25,20 @@ Binary search (https://leetcode.com/explore/learn/card/binary-search/138/backgro
 ===================== 
 Chuyển sang Binary Tree (Chỉ nên cover các bài cơ bản nhất, các bài khó để làm sau)
 
+N-ary Tree
+Trie
+Hash Table
 
 =====================
 
 : Ứng dụng trong Binary Tree (Sau)
+
+
+
+================ STL  =============
+
+
+* Pair in Java:
+
+
+
