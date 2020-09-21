@@ -20,7 +20,7 @@ _V39_ | 24. Swap Nodes in Pairs
 == Độ phức tạp thuật toán ==
 
 : ứng dụng trong tìm kiếm
-Binary search (https://leetcode.com/explore/learn/card/binary-search/138/background/1038/)
+_V40_Binary search (https://leetcode.com/explore/learn/card/binary-search/138/background/1038/)
 
 ===================== 
 Chuyển sang Binary Tree (Chỉ nên cover các bài cơ bản nhất, các bài khó để làm sau)
