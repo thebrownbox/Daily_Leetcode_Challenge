@@ -52,3 +52,10 @@ Videos:
 | 36  |      |                                                      |       |                                                                                    |                                                    |        |
 | 37  |      |                                                      |       |                                                                                    |                                                    |        |
 | 38  |      |                                                      |       |                                                                                    |                                                    |        |
+
+
+| No. | ID   | Name                                    | Level | URL                                                                   | Guide                                              | Tags   |
+|-----|------|-----------------------------------------|-------|-----------------------------------------------------------------------|----------------------------------------------------|--------|
+| 1   | 485  | Max Consecutive Ones                    | E     | https://leetcode.com/problems/max-consecutive-ones/                   | https://www.youtube.com/watch?v=MxAybn96rlQ&t=300s | #array |
+| 2   | 1295 | Find Numbers with Even Number of Digits | E     | https://leetcode.com/problems/find-numbers-with-even-number-of-digits |                                                    | #array |
+| 3   | 977  | Squares of a Sorted Array               | E     | https://leetcode.com/problems/squares-of-a-sorted-array               |                                                    | #array |
