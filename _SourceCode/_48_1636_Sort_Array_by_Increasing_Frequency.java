@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -35,24 +36,24 @@ public class _48_1636_Sort_Array_by_Increasing_Frequency {
 
         //B0. Di dem so lan xuat hien cua cac phan tu
         for (int i = 0; i < a.length; i++) {
-            int convertedValue = a[i] + ADD_VALUE;
+            int convertedValue = a[i] - ADD_VALUE;
             count[convertedValue]++;
         }
 
-        //
-        Queue<Node> mSet = new PriorityQueue<>();
+        Queue<Node> pQueue = new PriorityQueue<>();
         for (int convertedValue = 0; convertedValue <= MAX_VALUE; convertedValue++) {
             if(count[convertedValue] > 0)
             {
-                int originalValue = convertedValue - ADD_VALUE;
-                Node newNode = new Node(originalValue, count[convertedValue]);
-                mSet.add(newNode);
+                int originValue = convertedValue - ADD_VALUE;
+                Node newNode = new Node(originValue, count[convertedValue]);
+                pQueue.add(newNode);
             }
         }
 
         int[] result = new int[a.length];
         int indexResult = 0;
-        for (Node node : mSet) {
+        while(pQueue.isEmpty() == false){
+            Node node = pQueue.remove();
             int value = node.value;
             int freq = node.freq;
             for (int i = 0; i < freq; i++) {
