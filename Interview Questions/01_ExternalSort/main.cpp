@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <cstring>
 #include <algorithm>
@@ -8,13 +9,12 @@
 using namespace std;
 //-------- Global Variables -----------
 
-
+//main functions
+int splitSortThenSave(char *inputFileName, int ramSize);
+int sortThenSaveChunkFile(int index, vector<string*>& chunk);
 // utility functions
 bool compareStringPointers(string *s1, string *s2);
-/**
- * Description
- * */
-int splitSortThenSave(char *inputFileName, int ramSize);
+
 
 
 int main(int argc, char *argv[])
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         RAM_SIZE = atoi(argv[3]);
     }
 
-    cout << pInputFileName << " " << pOutputFileName << " " << RAM_SIZE << endl;
+    cout << "input(" << pInputFileName << ") output(" << pOutputFileName << ") RamSize(" << RAM_SIZE << ")" << endl;
     
     splitSortThenSave(pInputFileName, RAM_SIZE);
 
@@ -62,15 +62,63 @@ bool compareStringPointers(string *s1, string *s2)
     return r < 0 ? true : false;
 }
 
-int splitSortThenSave(char *inputFileName, int ramSize)
+int splitSortThenSave(char *inputFileName, int maxFileSize)
 {
     ifstream inputStream(inputFileName);
 
     if(inputStream.is_open())
     {
-        
+        int byteCount = 0;
+        string strLine;
+        vector<string*> vecChunks;
+        int chunkCount = 0;
+        while(getline(inputStream, strLine))
+        {
+            string *pLine = new string(strLine);
+            if(byteCount + pLine->size() > maxFileSize)
+            {
+                // finish previous 
+                byteCount = 0;
+                chunkCount++;
+                sortThenSaveChunkFile(chunkCount, vecChunks);
+                vecChunks.clear();
+            }
+            
+            // continues as normal
+            byteCount += pLine->size();
+            vecChunks.push_back(pLine);
+        }
+
+        if(vecChunks.size() > 0)
+        {
+            // Thu hien xu ly not lan cuoi
+            chunkCount++;
+            sortThenSaveChunkFile(chunkCount, vecChunks);
+            vecChunks.clear();
+        }
     }
     
     inputStream.close();
+    return 0;
+}
+
+int sortThenSaveChunkFile(int index, vector<string*>& chunk)
+{
+    stringstream ss;
+    ss << "temp_" << index << ".txt";
+    string strFileName = ss.str();
+    ofstream outputStream(&strFileName[0]);
+
+    sort(chunk.begin(), chunk.end(), compareStringPointers);
+
+    for (size_t i = 0; i < chunk.size(); i++)
+    {
+        string* pLine = chunk[i];
+        outputStream << (*pLine) << endl;
+        delete pLine;
+    }
+
+    cout << strFileName << " created! " << endl;
+    
     return 0;
 }
