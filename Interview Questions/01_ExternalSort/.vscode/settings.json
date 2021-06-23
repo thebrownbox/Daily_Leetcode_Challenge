@@ -9,6 +9,9 @@
         "utility": "cpp",
         "istream": "cpp",
         "iterator": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "new": "cpp",
+        "filesystem": "cpp"
     }
 }
