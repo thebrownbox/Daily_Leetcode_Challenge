@@ -1,7 +1,7 @@
 
 // Recursion for Linked List
 
-public class R1_Merge_Two_Sorted_Lists {
+public class _38_21_Merge_Two_Sorted_Lists {
     public static class ListNode {
         int val;
         ListNode next;
