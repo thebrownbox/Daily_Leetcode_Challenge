@@ -1,33 +1,16 @@
 /**
- * 36. Valid Sudoku [M] https://leetcode.com/problems/valid-sudoku/ Tags:
- * #hashtable #array
+ * 36. Valid Sudoku [M] 
+ * https://leetcode.com/problems/valid-sudoku/ 
+ * Tags: #hashtable #array
  */
 public class _69_36_Valid_Sudoku {
 
     // Check row k
-    private boolean checkRow(char[][] a, int k) {
+    private boolean checkRowAndCol(char[][] a, int k, boolean isRow) {
         boolean[] daXuatHien = new boolean[a.length+1];
 
         for (int j = 0; j < a.length; j++) {
-            char c = a[k][j];
-            if(c != '.')
-            {
-                int c_int = (int)c - (int)('0');
-                if(daXuatHien[c_int] == true)
-                    return false;
-                daXuatHien[c_int] = true;
-            }
-        }
-
-        return true;
-    }
-
-    // Check column k
-    private boolean checkCol(char[][] a, int k) {
-        boolean[] daXuatHien = new boolean[a.length+1];
-        
-        for (int i = 0; i < a.length; i++) {
-            char c = a[i][k];
+            char c = isRow ? a[k][j] : a[j][k];
             if(c != '.')
             {
                 int c_int = (int)c - (int)('0');
@@ -66,7 +49,7 @@ public class _69_36_Valid_Sudoku {
         // Kiem tra cac hang ngang
         // Kiem tra cac hang doc
         for (int i = 0; i < a.length; i++) {
-            if (checkRow(a, i) == false || checkCol(a, i) == false)
+            if (!checkRowAndCol(a, i, true) || !checkRowAndCol(a, i, false))
                 return false;
         }
 
