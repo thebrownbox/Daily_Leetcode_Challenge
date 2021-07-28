@@ -1,13 +1,14 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 37. Sudoku Solver [H]
  * https://leetcode.com/problems/sudoku-solver/
- * Tags: #backtracking #recursion
+ * Tags: #backtracking #recursion #hashtable 
  */
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class _70_37_Sudoku_Solver {
-    // Check row k
+
     private boolean checkRowAndCol(char[][] a, int k, boolean isRow) {
         boolean[] daXuatHien = new boolean[a.length+1];
 
@@ -25,7 +26,6 @@ public class _70_37_Sudoku_Solver {
         return true;
     }
 
-    // Check block 3x3 from (i,j)
     private boolean checkBlock(char[][] a, int i0, int j0) {
         boolean[] daXuatHien = new boolean[a.length+1];
         int i_end = i0 + 3;
@@ -64,118 +64,105 @@ public class _70_37_Sudoku_Solver {
     }
 
 
+    private boolean mIsFound = false;
 
-    private final int SIZE = 9;
-    public boolean bIsFound = false;
-    private char[][] result = new char[SIZE][SIZE];
-
-    private void copyTo(char[][] a, char[][] b)
+    private void backtrackToNext(char[][] a, int i, int j)
     {
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a.length; j++) {
-                b[i][j] = a[i][j];
-            }
+        int next_i, next_j;
+        if(j < 8){
+            next_i = i;
+            next_j = j+1;
+        }else{
+            next_i = i+1;
+            next_j = 0;
         }
+        backtrack(a, next_i, next_j);
     }
 
-    // Check is a[i][j] is a valid config?
-    private boolean isValidCell(char[][] a, int cur_i, int cur_j, char c)
-    {
-        for (int k = 0; k < a.length; k++) {
+    private boolean checkValidValue(char[][] a, int cur_i, int cur_j, char c) {
+        //Kiểm tra hàng ngang và dọc xem c đã tồn tại hay chưa?
+        for (int k = 0; k < 9; k++) {
             if(a[cur_i][k] == c || a[k][cur_j] == c)
                 return false;
         }
-        int i0 = (cur_i / 3) * 3;
-        int j0 = (cur_j / 3) * 3;
+
+        // Kiểm tra block
+        int i0 = (cur_i/3)*3;
+        int j0 = (cur_j/3)*3;
         for (int i = i0; i < i0+3; i++) {
             for (int j = j0; j < j0+3; j++) {
                 if(a[i][j] == c)
                     return false;
             }
         }
+
         return true;
     }
 
-    private void backtrack(int i, int j, char[][] a)
+    private void copyTo(char[][] a, char[][] b)
     {
-        if(i >= 0 && i <= 8 && j >= 0 && j <= 8 && bIsFound == false)
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                b[i][j] = a[i][j];
+            }
+        }
+    }
+    private char[][] result = new char[9][9];
+    private void backtrack(char[][] a, int i, int j)
+    {
+        if(i >= 0 && i <= 8 && j >= 0 && j <= 8 && !mIsFound)
         {
-            if(a[i][j] == '.')// chi xu ly nhung o dang trong
+            if(a[i][j] == '.')
             {
-                //Thu cac truong hop tai (i,j)
-                for (int k = 1; k <= 9 && !bIsFound; k++) {
-                    char c = (char)('0' + k);
-                    if(isValidCell(a, i, j, c))
+                for (char c = '1'; c <= '9' && !mIsFound; c++){
+                    if(checkValidValue(a, i, j, c))
                     {
                         a[i][j] = c;
-                    
-                        if(i == 8 && j == 8)
+                        if(i == 8 && j == 8) // Kiem tra cấu hình hoàn thiện này có đúng ko?
                         {
-                            //check
-                            if(isValidSudoku(a)){
-                                bIsFound = true;
+                            if(isValidSudoku(a))
+                            {
                                 copyTo(a, result);
+                                mIsFound = true;
                                 return;
                             }
                         }
                         else
                         {
-                            int next_i = i, next_j = j;
-                            if(next_j < 8){// Dich sang phai
-                                next_j++;
-                            }else{ // Xuong dong, lui ve dau dong
-                                next_i++;
-                                next_j = 0;
-                            }
-                            backtrack(next_i, next_j, a);
+                            backtrackToNext(a, i, j);
                         }
                     }
-
-                    a[i][j] = '.';
                 }
                 a[i][j] = '.';
-                
             }
-            else// Di chuyen den o tiep theo
+            else
             {
-                if(i == 8 && j == 8)
+                if(i == 8 && j == 8)// Kiem tra cấu hình hoàn thiện này có đúng ko?
                 {
-                    //check
-                    if(isValidSudoku(a)){
-                        bIsFound = true;
+                    if(isValidSudoku(a))
+                    {
                         copyTo(a, result);
+                        mIsFound = true;
                         return;
                     }
                 }
-                else
+                else if(!mIsFound)
                 {
-                    if(bIsFound == false)
-                    {
-                        if(j < 8){// Dich sang phai
-                            j++;
-                        }else{ // Xuong dong, lui ve dau dong
-                            i++;
-                            j = 0;
-                        }
-                        backtrack(i, j, a);
-                    }
+                    backtrackToNext(a, i, j);
                 }
             }
         }
     }
 
-    public void solveSudoku(char[][] board) {
-        backtrack(0, 0, board);
-        copyTo(result, board);
+
+    public void solveSudoku(char[][] a) {
+        backtrack(a, 0, 0);
+        copyTo(result, a);
     }
 
-
- 
-
     public static void main(String[] args) {
-        _70_37_Sudoku_Solver solver = new _70_37_Sudoku_Solver();
         char[][] board = {{'5','3','.','.','7','.','.','.','.'},{'6','.','.','1','9','5','.','.','.'},{'.','9','8','.','.','.','.','6','.'},{'8','.','.','.','6','.','.','.','3'},{'4','.','.','8','.','3','.','.','1'},{'7','.','.','.','2','.','.','.','6'},{'.','6','.','.','.','.','2','8','.'},{'.','.','.','4','1','9','.','.','5'},{'.','.','.','.','8','.','.','7','9'}};
+        _70_37_Sudoku_Solver solver = new _70_37_Sudoku_Solver();
         solver.solveSudoku(board);
-        System.out.println("Found: " + solver.bIsFound);
     }
 }
