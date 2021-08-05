@@ -1,25 +1,26 @@
 /**
  * 53. Maximum Subarray [E]
  * https://leetcode.com/problems/maximum-subarray/
+ * Tags: #dp #array
  */
 public class _74_53_Maximum_Subarray_1 {
 
-    public static int maxSubArray(int[] nums) {
-        int result = 0;
-        int[] sums = new int[nums.length];
-
-        sums[0] = nums[0];
-        for (int i = 1; i < sums.length; i++) {
-            sums[i] = sums[i-1] + nums[i];
+    // Cong thuc truy hoi: tong(i,j) = sum[j] - sum[i] + a[i] 
+    public static int maxSubArray(int[] a) {
+        int result = a[0];
+        int[] sum = new int[a.length];
+        
+        sum[0] = a[0];
+        // sum[i] = sum[i-1] + a[i]
+        for (int i = 1; i < sum.length; i++) {
+            sum[i] = sum[i-1] + a[i];
         }
 
-        result = sums[0];
-        for (int i = 0; i < sums.length; i++) {
-            for (int j = i; j < sums.length; j++) {
-                int sum_i_to_j = sums[j] - sums[i] + nums[i];
-                if(sum_i_to_j > result){
-                    result = sum_i_to_j;
-                }
+        //tong(i,j) = sum[j] - sum[i] + a[i] 
+        for (int i = 0; i < sum.length; i++) {
+            for (int j = i; j < sum.length; j++) {
+                int tong_i_j = sum[j] - sum[i] + a[i];
+                result = Math.max(result, tong_i_j);
             }
         }
 
