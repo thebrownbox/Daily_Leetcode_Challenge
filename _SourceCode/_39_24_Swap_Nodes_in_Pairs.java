@@ -5,7 +5,7 @@
 
 import java.util.List;
 
-public class R3_Swap_Nodes_in_Pairs {
+public class _39_24_Swap_Nodes_in_Pairs {
     public static class ListNode {
         int val;
         ListNode next;

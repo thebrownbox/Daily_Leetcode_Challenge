@@ -1,7 +1,7 @@
 
 // Recursion for Linked List
 
-public class R2_Reverse_Linked_List_02 {
+public class _37_206_Reverse_Linked_List {
     public static class ListNode {
         int val;
         ListNode next;
