@@ -5,22 +5,25 @@
  */
 public class _74_53_Maximum_Subarray_1 {
 
-    // Cong thuc truy hoi: tong(i,j) = sum[j] - sum[i] + a[i] 
     public static int maxSubArray(int[] a) {
         int result = a[0];
-        int[] sum = new int[a.length];
-        
-        sum[0] = a[0];
-        // sum[i] = sum[i-1] + a[i]
-        for (int i = 1; i < sum.length; i++) {
-            sum[i] = sum[i-1] + a[i];
+
+        // tinh tong sum
+        int[] sums = new int[a.length];
+
+        // BTCS:
+        sums[0] = a[0];
+
+        // CTTH:
+        for (int i = 1; i < sums.length; i++) {
+            sums[i] = sums[i-1] + a[i];
         }
 
-        //tong(i,j) = sum[j] - sum[i] + a[i] 
-        for (int i = 0; i < sum.length; i++) {
-            for (int j = i; j < sum.length; j++) {
-                int tong_i_j = sum[j] - sum[i] + a[i];
-                result = Math.max(result, tong_i_j);
+        // Tinh tong ij
+        for (int i = 0; i < sums.length; i++) {
+            for (int j = i; j < sums.length; j++) {
+                int sum_i_j = sums[j] - sums[i] + a[i];
+                result = Math.max(result, sum_i_j);
             }
         }
 
