@@ -10,14 +10,25 @@ import java.util.List;
 public class _82_386_Lexicographical_Numbers_3 {
 
     private List<Integer> result = new ArrayList<>();
-    private void dfs(int i)
+    private int MAX = 0;
+    private void dfs(int base)
     {
-
+        if(base <= MAX)
+        {
+            int nextBase = base * 10;
+            for (int i = 0; i < 10; i++) {
+                int nextNumber = nextBase + i;
+                if(nextNumber <= MAX && nextNumber != 0){
+                    result.add(nextNumber);
+                    dfs(nextNumber);
+                }
+            }
+        }
     }
 
     public List<Integer> lexicalOrder(int n) {
-        
-        
+        MAX = n;
+        dfs(0);
         return result;
     }
 }
