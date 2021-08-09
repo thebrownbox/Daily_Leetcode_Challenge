@@ -3,7 +3,7 @@
  * https://leetcode.com/problems/min-cost-climbing-stairs/
  * Tags: #array #dp
  */
-public class _76_746_Min_Cost_Climbing_Stairs {
+public class _77_746_Min_Cost_Climbing_Stairs {
     public int minCostClimbingStairs(int[] a) {
         int[] tien = new int[a.length + 1];
 

@@ -4,7 +4,7 @@
  * Tags: #dp #array
  */
 
-public class _74_53_Maximum_Subarray_2 {
+public class _75_53_Maximum_Subarray_2 {
     public static int maxSubArray(int[] a) {
         int result = a[0];
         int[] max = new int[a.length];

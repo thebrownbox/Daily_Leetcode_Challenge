@@ -3,7 +3,7 @@
  * https://leetcode.com/problems/climbing-stairs/
  * Tags: #array #dp
  */
-public class _75_70_Climbing_Stairs {
+public class _76_70_Climbing_Stairs {
     public int climbStairs(int n) {
         //count[i]: so cach de buoc len bac i
         int[] count = new int[n+1];
