@@ -1,4 +1,15 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+
 public class Sample {
+
+    class TrieNode{
+        TrieNode children[26];
+        boolean isWord;
+    }
+
 
     public boolean buddyStrings(String s, String goal) {
         char[] a = s.toCharArray();

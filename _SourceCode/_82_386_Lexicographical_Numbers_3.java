@@ -9,56 +9,50 @@ import java.util.List;
 public class _82_386_Lexicographical_Numbers_3 {
 
     private class TrieNode{
-        private static final int CHILD_COUNT = 10;
-        public TrieNode[] children = new TrieNode[CHILD_COUNT];
-        public boolean isLast = false;
+        public static final int SIZE = 10;
+        public TrieNode[] children = new TrieNode[SIZE];
     }
 
     private TrieNode root = new TrieNode();
     private List<Integer> result = new ArrayList<>();
-
-    private void insert(TrieNode parent, int curIndex, String number)
-    {
+    private void insert(TrieNode parent, int curIndex, String number) {
         if(curIndex < number.length())
         {
             int childIndex = number.charAt(curIndex) - '0';
             if(parent.children[childIndex] == null){
                 parent.children[childIndex] = new TrieNode();
             }
-            if(curIndex == number.length() - 1){
-                parent.children[childIndex].isLast = true;
-            }
             insert(parent.children[childIndex], curIndex+1, number);
         }
     }
 
-    private void travel(TrieNode parent, StringBuilder sBuilder)
-    {
+    private void travel(TrieNode parent, int prefixNumber) {
         if(parent != null)
         {
-            for (int i = 0; i < TrieNode.CHILD_COUNT; i++) {
-                if(parent.children[i] != null){
-                    sBuilder.append(i);
-                    if(parent.children[i].isLast){
-                        result.add(Integer.parseInt(sBuilder.toString()));
-                    }
-                    travel(parent.children[i], sBuilder);
-                    sBuilder.deleteCharAt(sBuilder.length()-1);
+            for (int i = 0; i < TrieNode.SIZE; i++) {
+                if(parent.children[i] != null)
+                {
+                    int newNumber = prefixNumber*10 + i;
+                    result.add(newNumber);
+                    travel(parent.children[i], newNumber);
                 }
             }
         }
     }
 
     public List<Integer> lexicalOrder(int n) {
-        
+        //O(n)
         for (int i = 1; i <= n; i++) {
-            String number = String.valueOf(i);
-            insert(root, 0, number);
+            String iString = String.valueOf(i);
+            insert(root, 0, iString);// O(5)
         }
-
-        StringBuilder sBuilder = new StringBuilder();
-        travel(root, sBuilder);
+        // O(n)
+        travel(root, 0);
 
         return result;
     }
+
+
+
+ 
 }

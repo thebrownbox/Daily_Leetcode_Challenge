@@ -2,63 +2,63 @@
 public class _79_208_Implement_Trie_2 {
 
     private class TrieNode{
-        public static final int N = 26;
-        public TrieNode[] children = new TrieNode[N];
-        public boolean isLast = false;
+        public static final int SIZE = 26;
+        public TrieNode[] children = new TrieNode[SIZE];
+        public boolean isWord = false;
     }
 
-    private TrieNode root;
-
-    public _79_208_Implement_Trie_2() {
-        root = new TrieNode();
-    }
-    
+    private TrieNode root = new TrieNode();
     public void insert(String word) {
-        TrieNode curNode = root;
-        int index = 0;
-        while(index < word.length()){
-            int childIndex = word.charAt(index) - 'a';
-            if(curNode.children[childIndex] == null){
-                curNode.children[childIndex] = new TrieNode();
+        TrieNode parent = root;
+        int curIndex = 0;
+
+        while(curIndex < word.length()){
+            int childIndex = word.charAt(curIndex) - 'a';
+            if(parent.children[childIndex] == null){
+                parent.children[childIndex] = new TrieNode();
             }
-            if(index == word.length() - 1){
-                curNode.children[childIndex].isLast = true;
+
+            if(curIndex == word.length()-1){
+                parent.children[childIndex].isWord = true;
             }
-            curNode = curNode.children[childIndex];
-            index++;
+
+            parent = parent.children[childIndex];
+            curIndex++;
         }
     }
     
 
     public boolean startsWith(String prefix) {
-        TrieNode curNode = root;
-        int index = 0;
-        while(index < prefix.length())
-        {
-            int childIndex = prefix.charAt(index) - 'a';
-            if(curNode.children[childIndex] == null)
+        TrieNode parent = root;
+        int curIndex = 0;
+
+        while(curIndex < prefix.length()){
+            int childIndex = prefix.charAt(curIndex) - 'a';
+            if(parent.children[childIndex] == null){
                 return false;
-            curNode = curNode.children[childIndex];
-            index++;
+            }
+            parent = parent.children[childIndex];
+            curIndex++;
         }
+
         return true;
     }
 
 
     public boolean search(String word) {
-        TrieNode curNode = root;
-        int index = 0;
-        while(index < word.length())
-        {
-            int childIndex = word.charAt(index) - 'a';
-            if(curNode.children[childIndex] == null)
-                return false;
-            curNode = curNode.children[childIndex];
-            index++;
-        }
-        return curNode.isLast;
-    }
-    
+        TrieNode parent = root;
+        int curIndex = 0;
 
+        while(curIndex < word.length()){
+            int childIndex = word.charAt(curIndex) - 'a';
+            if(parent.children[childIndex] == null){
+                return false;
+            }
+            parent = parent.children[childIndex];
+            curIndex++;
+        }
+
+        return parent.isWord;
+    }
  
 }

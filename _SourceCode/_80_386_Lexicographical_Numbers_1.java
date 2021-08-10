@@ -9,17 +9,16 @@ import java.util.List;
 
 public class _80_386_Lexicographical_Numbers_1 {
     public List<Integer> lexicalOrder(int n) {
-        List<Integer> result = new ArrayList<>();
-        List<String> stringNumbers = new ArrayList<>();
-
+        List<String> listString = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
-            String iString = String.valueOf(i);
-            stringNumbers.add(iString);
+            listString.add(String.valueOf(i));
         }
 
-        Collections.sort(stringNumbers);
+        // O(nlogn)
+        Collections.sort(listString);
 
-        for (String string : stringNumbers) {
+        List<Integer> result = new ArrayList<>();
+        for (String string : listString) {
             result.add(Integer.parseInt(string));
         }
 

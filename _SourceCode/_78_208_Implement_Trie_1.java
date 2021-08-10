@@ -2,86 +2,73 @@
 public class _78_208_Implement_Trie_1 {
 
     private class TrieNode{
-        public static final int N = 26;
-        public TrieNode[] children = new TrieNode[N];
-        public boolean isLast = false;
+        public static final int SIZE = 26;
+        public TrieNode[] children = new TrieNode[SIZE];
+        public boolean isWord = false;
     }
 
+    private TrieNode root = new TrieNode();
 
-    private TrieNode root;
-
-    public _78_208_Implement_Trie_1() {
-        root = new TrieNode();
-    }
-
-    // return new TrieNode parent
-    private TrieNode insert(TrieNode parent, int index, String word){
-        if(index < word.length())
+    private void insert(TrieNode parent, int curIndex, String word)
+    {
+        if(curIndex < word.length())
         {
-            int childIndex = word.charAt(index) - 'a';
+            int childIndex = word.charAt(curIndex) - 'a';
             if(parent.children[childIndex] == null){
                 parent.children[childIndex] = new TrieNode();
             }
 
-            if(index == word.length() - 1){
-                parent.children[childIndex].isLast = true;
+            if(curIndex == word.length()-1){
+                parent.children[childIndex].isWord = true;
             }else{
-                insert(parent.children[childIndex], index+1, word);
+                insert(parent.children[childIndex], curIndex+1, word);
             }
         }
-        return parent;
     }
-    
+
     public void insert(String word) {
         insert(root, 0, word);
     }
-    
-    private boolean checkPrefix(TrieNode parent, int index, String prefix)
-    {
-        if(index < prefix.length())
-        {
-            int childIndex = prefix.charAt(index) - 'a';
-            if(parent.children[childIndex] == null){
-                return false;
-            }
-            if(index == prefix.length() - 1){
-                return true;
-            }
-            return checkPrefix(parent.children[childIndex], index+1, prefix);
-        }
-        return false;
-    }
 
-    public boolean startsWith(String prefix) {
-        return checkPrefix(root, 0, prefix);
-    }
-
-    private boolean search(TrieNode parent, int index, String word)
+    private boolean searchWord(TrieNode parent, int curIndex, String word)
     {
-        if(index < word.length())
+        if(curIndex < word.length())
         {
-            int childIndex = word.charAt(index) - 'a';
+            int childIndex = word.charAt(curIndex) - 'a';
             if(parent.children[childIndex] == null){
                 return false;
             }
 
-            if(index == word.length()-1){
-                return parent.children[childIndex].isLast;
+            if(curIndex == word.length()-1){
+                return parent.children[childIndex].isWord;
             }
 
-            return search(parent.children[childIndex], index+1, word);
+            return searchWord(parent.children[childIndex], curIndex+1, word);
         }
         return false;
     }
 
     public boolean search(String word) {
-        return search(root, 0, word);
+        return searchWord(root, 0, word);
     }
-    
 
-    public static void main(String[] args) {
-        _78_208_Implement_Trie_1 trie = new _78_208_Implement_Trie_1();
-        trie.insert("apple");
+
+    private boolean searchPrefix(TrieNode parent, int curIndex, String prefix)
+    {
+        if(curIndex < prefix.length()){
+            int childIndex = prefix.charAt(curIndex) - 'a';
+            if(parent.children[childIndex] == null){
+                return false;
+            }
+            if(curIndex == prefix.length()-1){
+                return true;
+            }
+            return searchPrefix(parent.children[childIndex], curIndex+1, prefix);
+        }
+        return false;
     }
- 
+    public boolean startsWith(String prefix) {
+        return searchPrefix(root, 0, prefix);
+    }
+
 }

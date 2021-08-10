@@ -5,14 +5,17 @@
  */
 import java.util.List;
 
+
 public class _84_648_Replace_Words_2 {
+
     private class TrieNode{
         public static final int SIZE = 26;
         public TrieNode[] children = new TrieNode[SIZE];
-        public boolean isLast = false;
+        public boolean isWord = false;
     }
+
     private TrieNode root = new TrieNode();
-    private StringBuilder strBuilder = new StringBuilder();
+
     private void insert(TrieNode parent, int curIndex, String word)
     {
         if(curIndex < word.length())
@@ -21,9 +24,8 @@ public class _84_648_Replace_Words_2 {
             if(parent.children[childIndex] == null){
                 parent.children[childIndex] = new TrieNode();
             }
-            
-            if(curIndex == word.length() - 1){
-                parent.children[childIndex].isLast = true;
+            if(curIndex == word.length()-1){
+                parent.children[childIndex].isWord = true;
             }else{
                 insert(parent.children[childIndex], curIndex+1, word);
             }
@@ -36,46 +38,38 @@ public class _84_648_Replace_Words_2 {
             if(parent.children[childIndex] == null){
                 return null;
             }
-            strBuilder.append(word.charAt(curIndex));
-            if(parent.children[childIndex].isLast){
-                return strBuilder.toString();
+            if(parent.children[childIndex].isWord){
+                return word.substring(0, curIndex+1);
             }
-
-            if(curIndex == word.length() - 1){
-                return null;
-            }else{
-                return findPrefix(parent.children[childIndex], curIndex+1, word);
-            }
+            return findPrefix(parent.children[childIndex], curIndex+1, word);
         }
         return null;
     }
 
     public String replaceWords(List<String> dictionary, String sentence) {
-        for (String prefix : dictionary) {
-            insert(root, 0, prefix);
+
+        //1000*100
+        for (String word : dictionary) {
+            insert(root, 0, word);
         }
 
-        String[] words = sentence.split(" ");
-        for (int i = 0; i < words.length; i++) {
-            strBuilder.delete(0, strBuilder.length());
-            String prefix = findPrefix(root, 0, words[i]);
+        StringBuilder sb = new StringBuilder();
+        String[] arr = sentence.split(" ");
+        for (int i = 0; i < arr.length; i++) { //1000
+            String prefix = findPrefix(root, 0, arr[i]);//100
             if(prefix != null){
-                words[i] = prefix;
+                arr[i] = prefix;
             }
-        }
-
-        strBuilder.delete(0, strBuilder.length());
-        for (String string : words) {
-            if(strBuilder.length() == 0){
-                strBuilder.append(string);
-            }else{
-                strBuilder.append(" ");
-                strBuilder.append(string);
+            if(sb.length() != 0){
+                sb.append(" ");
             }
+            sb.append(arr[i]);
         }
-
-        return strBuilder.toString();
+        
+        return sb.toString();
     }
+
+
 
 
 }
