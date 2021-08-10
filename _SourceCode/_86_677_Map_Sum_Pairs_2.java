@@ -1,7 +1,7 @@
 /**
  * LC_086
  * 677. Map Sum Pairs [M]
- * Tags: #recursion #trie 
+ * Tags: #recursion #trie #tree
  * #Java #medium
  * https://leetcode.com/problems/map-sum-pairs/
  */

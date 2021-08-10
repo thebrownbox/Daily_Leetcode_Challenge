@@ -1,5 +1,5 @@
 
-public class _78_208_Implement_Trie {
+public class _78_208_Implement_Trie_1 {
 
     private class TrieNode{
         public static final int N = 26;
@@ -10,7 +10,7 @@ public class _78_208_Implement_Trie {
 
     private TrieNode root;
 
-    public _78_208_Implement_Trie() {
+    public _78_208_Implement_Trie_1() {
         root = new TrieNode();
     }
 
@@ -80,7 +80,7 @@ public class _78_208_Implement_Trie {
     
 
     public static void main(String[] args) {
-        _78_208_Implement_Trie trie = new _78_208_Implement_Trie();
+        _78_208_Implement_Trie_1 trie = new _78_208_Implement_Trie_1();
         trie.insert("apple");
         boolean check = trie.startsWith("app");
     }
