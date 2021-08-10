@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class Sample {
 
     public boolean buddyStrings(String s, String goal) {
