@@ -4,7 +4,6 @@
  * Tags: #recursion #trie #tree
  */
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class _82_386_Lexicographical_Numbers_3 {

@@ -82,7 +82,6 @@ public class _78_208_Implement_Trie_1 {
     public static void main(String[] args) {
         _78_208_Implement_Trie_1 trie = new _78_208_Implement_Trie_1();
         trie.insert("apple");
-        boolean check = trie.startsWith("app");
     }
  
 }

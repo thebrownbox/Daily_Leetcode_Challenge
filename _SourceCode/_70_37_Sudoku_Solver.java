@@ -4,9 +4,6 @@
  * Tags: #backtracking #recursion #hashtable 
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class _70_37_Sudoku_Solver {
 
     private boolean checkRowAndCol(char[][] a, int k, boolean isRow) {
