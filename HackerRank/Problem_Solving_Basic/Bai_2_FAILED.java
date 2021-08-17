@@ -49,13 +49,13 @@ public class Bai_2_FAILED {
 
         }
 
-        //B2: Tính lại file size của từng folder
+        //B2: DFS Tính lại file size của từng folder
         updateFolderSizeDFS(rootIndex);
 
-        //B3: DFS tìm xem đoạn nào có thể cắt được
+        //B3: tìm xem đoạn nào có thể cắt được
         int totalSize = 0;
-        for (int i = 0; i < n; i++) {
-            totalSize += files_size.get(i);
+        for (Integer fileSize : files_size) {
+            totalSize += fileSize;
         }
 
         for (int i = 0; i < n; i++) {
@@ -67,17 +67,17 @@ public class Bai_2_FAILED {
     }
 
     public static void main(String[] args) {
-        // testcase 1
-        // Integer[] a = { -1, 0, 1, 2 };
-        // Integer[] fileSize = { 1, 4, 3, 4 };
+        // testcase 1: expected output: 2
+        Integer[] a = { -1, 0, 1, 2 };
+        Integer[] fileSize = { 1, 4, 3, 4 };
 
-        // testcase 2
+        // testcase 2: expected output: 19
         // Integer[] a = { -1, 0, 0, 0 };
         // Integer[] fileSize = { 10, 11, 10, 10 };
 
-        // testcase 2
-        Integer[] a = { -1, 0, 0, 1, 1, 2 };
-        Integer[] fileSize = { 1, 2, 2, 1, 1, 1 };
+        // testcase 3: expected output: 0
+        // Integer[] a = { -1, 0, 0, 1, 1, 2 };
+        // Integer[] fileSize = { 1, 2, 2, 1, 1, 1 };
 
         mostBalancedPartition(Arrays.asList(a), Arrays.asList(fileSize));
     }
