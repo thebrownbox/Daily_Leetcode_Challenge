@@ -2,33 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Bai_4 {
-    public static int longestSubarray2222(List<Integer> a) {
-        // Write your code here
-        int maxCount = 0;
-        
-        int count = 0;
-        int preValue = 0;
-        for (int i = 0; i < a.size(); i++) {
-            if(i == 0){
-                count++;
-                preValue = a.get(i);
-            }else{
-                if(Math.abs(a.get(i) - preValue) <= 1){
-                    count++;
-                }else{
-                    count = 1;
-                    preValue = a.get(i);
-                }
-            }
-            maxCount = Math.max(count, maxCount);
-        }
-
-        return maxCount;
-    }
-
-
-
+public class Bai_4_OK {
+    
     private static class Node{
         public int value;
         public int freq;
