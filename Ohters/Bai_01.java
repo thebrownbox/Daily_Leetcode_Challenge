@@ -8,7 +8,7 @@ import java.util.Set;
  * 2. Travel (DFS) in trie by the word sequence...
  * -> Each time travel try to buil the word in the sentence
  * -> To the end of the word => create the hold sentence.
- * Impotance Node: when it hit a Node.isWord = true, there are 2 option:
+ * Impotance Note: when it hit a Node.isWord = true, there are 2 option:
  * - Create new word for the next character
  * - Continue build the current word for the next character
  */
