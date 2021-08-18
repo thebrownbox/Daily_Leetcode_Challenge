@@ -3,7 +3,14 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Bai_01
+ * Bai_01: Using Trie
+ * 1. Use wordDict to build trie
+ * 2. Travel (DFS) in trie by the word sequence...
+ * -> Each time travel try to buil the word in the sentence
+ * -> To the end of the word => create the hold sentence.
+ * Impotance Node: when it hit a Node.isWord = true, there are 2 option:
+ * - Create new word for the next character
+ * - Continue build the current word for the next character
  */
 public class Bai_01 {
     private static class Node{
