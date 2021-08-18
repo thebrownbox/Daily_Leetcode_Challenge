@@ -109,13 +109,18 @@ public class Bai_01 {
     public static void main(String[] args) {
         //Test 1:
         // Expected: cat sand dog, cats and dog
-        String word = "catsanddog";
-        String[] wordDict = {"cat", "cats", "and", "sand", "dog"};
+        // String word = "catsanddog";
+        // String[] wordDict = {"cat", "cats", "and", "sand", "dog"};
 
         // Test 2:
         // Expected: cat and cat, ca t and ca t, cat and ca t, ca t and cat
         // String word = "catandcat";
         // String[] wordDict = {"cat", "and", "ca", "t"};
+
+        // Test 4:
+        // Expected: 
+        String word = "aaabbc";
+        String[] wordDict = {"a", "aa", "aaa", "bb", "c"};
 
         List<String> results = doMyThing(word, wordDict);
         for (String sentance : results) {
