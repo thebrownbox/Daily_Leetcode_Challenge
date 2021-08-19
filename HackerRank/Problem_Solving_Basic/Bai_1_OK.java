@@ -24,19 +24,10 @@ public class Bai_1_OK {
             char[] arr = q.toCharArray();
             Arrays.sort(arr);
             String newString = new String(arr);
-            if(mMyCount.containsKey(newString)){
-                int count = (int)mMyCount.get(newString);
-                result.add(count);
-            }else{
-                result.add(0);
-            }
-      
+            int count = (int)mMyCount.getOrDefault(newString, 0);
+            result.add(count);
         }
         return result;
     }
-
-
-
-
     
 }
