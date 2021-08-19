@@ -16,8 +16,8 @@ public class Bai_1_OK {
         for (String dict : dictionary) {
             char[] arr = dict.toCharArray();
             Arrays.sort(arr);
-            String newString = new String(arr);
-            mMyCount.put(newString, mMyCount.getOrDefault(newString, 0)+1);
+            String sortedString = String.valueOf(arr);
+            mMyCount.put(sortedString, mMyCount.getOrDefault(sortedString, 0)+1);
         }
 
         for (String q : query) {
