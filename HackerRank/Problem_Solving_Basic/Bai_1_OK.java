@@ -23,8 +23,8 @@ public class Bai_1_OK {
         for (String q : query) {
             char[] arr = q.toCharArray();
             Arrays.sort(arr);
-            String newString = new String(arr);
-            int count = (int)mMyCount.getOrDefault(newString, 0);
+            String key = new String(arr);
+            int count = (int)mMyCount.getOrDefault(key, 0);
             result.add(count);
         }
         return result;
