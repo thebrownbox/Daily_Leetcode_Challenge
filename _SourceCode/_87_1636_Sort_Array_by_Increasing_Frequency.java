@@ -1,10 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * LC_087
  * 1636. Sort Array by Increasing Frequency [E]
@@ -13,7 +6,12 @@ import java.util.Map;
  * https://leetcode.com/problems/sort-array-by-increasing-frequency/
  */
 
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class _87_1636_Sort_Array_by_Increasing_Frequency {
 

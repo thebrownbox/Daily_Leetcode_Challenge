@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch _88_Jesse_and_Cookies",
+            "request": "launch",
+            "mainClass": "_88_Jesse_and_Cookies",
+            "projectName": "_SourceCode_cc9e0eea"
+        },
+        {
+            "type": "java",
             "name": "Launch _88_300_Longest_Increasing_Subsequence",
             "request": "launch",
             "mainClass": "_88_300_Longest_Increasing_Subsequence",
