@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch _92_Dijkstra_Shortest_Reach_2",
+            "request": "launch",
+            "mainClass": "_92_Dijkstra_Shortest_Reach_2",
+            "projectName": "_SourceCode_cc9e0eea"
+        },
+        {
+            "type": "java",
             "name": "Launch _88_Jesse_and_Cookies",
             "request": "launch",
             "mainClass": "_88_Jesse_and_Cookies",
