@@ -1,7 +1,7 @@
 /**
- * LC_0091
+ * LC_0092
  * Dijkstra: Shortest Reach 2 [H]
- * Tags: #bfs #queue
+ * Tags: #bfs #heap
  * #Java #Hard
  * https://www.hackerrank.com/challenges/dijkstrashortreach
  */
