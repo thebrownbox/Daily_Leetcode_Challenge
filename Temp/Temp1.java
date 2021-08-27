@@ -21,7 +21,7 @@ public class Temp1 {
             System.out.println();
         }
 
-        // Print 2nd to (n-1)th line: k lines
+        // Print 2nd to (n-1)th line:
         for (int line = 2; line <= n-1; line++) {
             // print: *      * (only print the first and the last)
             for (int i = 0; i < n; i++) {
