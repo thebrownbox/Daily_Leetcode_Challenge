@@ -17,4 +17,8 @@ public class _73_268_Missing_Number {
 
         return result;
     }
+
+    public static void main(String[] args) {
+        
+    }
 }
