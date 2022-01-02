@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch _00_791_Custom_Sort_String",
+            "request": "launch",
+            "mainClass": "_00_791_Custom_Sort_String",
+            "projectName": "_SourceCode_905b6b1f"
+        },
+        {
+            "type": "java",
             "name": "Launch _92_Dijkstra_Shortest_Reach_2",
             "request": "launch",
             "mainClass": "_92_Dijkstra_Shortest_Reach_2",
