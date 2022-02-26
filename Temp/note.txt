@@ -1,0 +1,18 @@
+ * https://leetcode.com/problems/repeated-dna-sequences/
+ * 
+ * Tags: #hashtable
+
+
+
+
+
+
+1380. Lucky Numbers in a Matrix [3] => 30
+832. Flipping an Image [E] => 20
+
+953. Verifying an Alien Dictionary [E] => 20
+925. Long Pressed Name => 20
+1002. Find Common Characters => 20
+
+187. Repeated DNA Sequences [M] => 10
+890. Find and Replace Pattern [M] => 5
