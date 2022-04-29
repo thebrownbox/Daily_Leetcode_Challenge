@@ -1,0 +1,21 @@
+# Array
+2206. Divide Array Into Equal Pairs
+
+# String
+1123. Counting Words With a Given Prefix
+
+
+# Array
+66. Plus One
+
+
+# (Sorting)
+1122. Relative Sort Array
+
+
+# Stack
+394. Decode String
+
+# (Map)
+884.  Uncommon Words from Two Sentences
+885.  Repeated DNA Sequences
